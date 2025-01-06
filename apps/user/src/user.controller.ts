@@ -10,17 +10,8 @@ export class UserController {
     private readonly redisService: RedisService,
   ) { }
 
-
-  @Get()
-  async getHello() {
-    const keys = await this.redisService.keys('*');
-    return this.userService.getHello() + ' --- ' + keys;
-  }
-
   @Post('register')
   async register(@Body() registerUser: RegisterUserDto) {
-    delete registerUser.captcha
-
-    return await this.userService.create(registerUser);
+    return await this.userService.register(registerUser);
   }
 }
