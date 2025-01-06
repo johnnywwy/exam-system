@@ -5,10 +5,12 @@ import { firstValueFrom } from 'rxjs';
 
 @Controller()
 export class AnswerController {
-  constructor(private readonly answerService: AnswerService) { }
+  constructor(
+    private readonly answerService: AnswerService,
+    @Inject('EXAM_SERVICE') private readonly examClient: ClientProxy,
+  ) { }
 
-  @Inject('EXAM_SERVICE')
-  private examClient: ClientProxy
+
 
   @Get()
   async getHello() {
