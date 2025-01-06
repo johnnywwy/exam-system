@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(
     private readonly prismaService: PrismaService,
-    private readonly redisService: RedisService
+    private readonly redisService: RedisService,
   ) { }
 
   async create(data: Prisma.UserCreateInput) {
