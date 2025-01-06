@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement()) @map("id") // 用户主键
+  username   String   @unique @map("username") @db.VarChar(50) // 用户名
+  password   String   @map("password") @db.VarChar(50) // 密码
+  email      String   @map("email") @db.VarChar(50) // 邮箱
+  createTime DateTime @default(now()) @map("create_time") // 创建时间
+  updateTime DateTime @updatedAt @map("update_time") // 更新时间
+
+  @@map("user") // 表名为 user
+}

@@ -1,0 +1,9 @@
+POST http://localhost:3001/user/register
+Content-Type: application/json
+
+{
+  "username": "guang",
+  "password": "123456",
+  "email": "xxxx@xx.com",
+  "captcha": "abc123"
+}
