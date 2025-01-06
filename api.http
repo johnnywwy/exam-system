@@ -1,9 +1,20 @@
-POST http://localhost:3001/user/register
-Content-Type: application/json
+@baseUrl = http://localhost:3001
+# @accessToken = ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+# @name 注册
+POST {{baseUrl}}/user/register
+# Authorization: Bearer {{accessToken}}
 
 {
-  "username": "dongdong",
+  "username": "dongdong2",
   "password": "123456",
   "email": "xxxx@xx.com",
   "captcha": "aaa111"
 }
+
+###
+
+# @name 获取验证码
+GET {{baseUrl}}/user/register-captcha?address=johnnywwy@gmail.com
+Content-Type: application/json

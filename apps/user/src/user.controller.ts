@@ -16,6 +16,8 @@ export class UserController {
 
   @Get('register-captcha')
   async captcha(@Query('address') address: string) {
+    console.log('address', address);
+
     // 校验邮箱地址格式
     if (!this.validateEmail(address)) {
       throw new HttpException('邮箱地址格式不正确', HttpStatus.BAD_REQUEST);
