@@ -7,11 +7,13 @@ export class EmailService {
   private readonly logger = new Logger(EmailService.name);
   private transporter: Transporter;
 
+
+
   constructor(private readonly configService: ConfigService) {
     this.transporter = createTransport({
-      host: this.configService.get<string>('EMAIL_HOST', 'smtp.qq.com'), // 邮件服务器地址
-      port: this.configService.get<number>('EMAIL_PORT', 587),          // 邮件服务器端口
-      secure: this.configService.get<boolean>('EMAIL_SECURE', false),   // 是否启用 TLS
+      host: this.configService.get<string>('EMAIL_HOST'), // 邮件服务器地址
+      port: this.configService.get<number>('EMAIL_PORT'),          // 邮件服务器端口
+      secure: this.configService.get<boolean>('EMAIL_SECURE', true),   // 是否启用 TLS
       auth: {
         user: this.configService.get<string>('EMAIL_USER'),             // 邮箱地址
         pass: this.configService.get<string>('EMAIL_PASS'),             // 邮箱授权码
@@ -32,7 +34,7 @@ export class EmailService {
       await this.transporter.sendMail({
         from: {
           name: this.configService.get<string>('EMAIL_FROM_NAME', '考试系统'), // 默认发件人名称
-          address: this.configService.get<string>('EMAIL_USER'),              // 默认发件人邮箱
+          address: this.configService.get<string>('EMAIL_USER'),
         },
         to,
         subject,

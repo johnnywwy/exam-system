@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3001
-# @accessToken = ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiZ3VhbmciLCJpYXQiOjE3MzYyMjkyNDMsImV4cCI6MTczNjgzNDA0M30._Rgylyysvyyp6gDVGDtmqh2K6cBynAaCROKBuwh5UwI
 
 
 # @name 注册
@@ -16,5 +16,45 @@ POST {{baseUrl}}/user/register
 ###
 
 # @name 获取验证码
-GET {{baseUrl}}/user/register-captcha?address=johnnywwy@gmail.com
+GET {{baseUrl}}/user/register-captcha?address=johnnywwy@163.com
 Content-Type: application/json
+
+###
+
+# @name 登录
+POST {{baseUrl}}/user/login
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "username": "guang",
+  "password": "123456"
+}
+
+###
+
+# @name aaa
+GET {{baseUrl}}/user/aaa
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+###
+
+# @name 修改密码
+POST {{baseUrl}}/user/update_password
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "username": "dongdong",
+  "password": "999999",
+  "email": "987654321@xx.com",
+  "captcha": "221687"
+}
+
+###
+
+# @name 修改密码
+GET {{baseUrl}}/user/update_password/captcha?address=987654321@xx.com
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}

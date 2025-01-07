@@ -6,7 +6,6 @@ import { EmailService } from './email.service';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // 配置模块全局可用
-      envFilePath: ['.env'], // 指定加载环境变量文件
     }),
   ],
   providers: [EmailService],
